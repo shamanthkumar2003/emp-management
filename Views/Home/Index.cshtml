@@ -1,8 +1,49 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model DashboardViewModel
+
+@{
+    ViewData["Title"] = "Work Assignment Dashboard";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Work Assignment Dashboard</h1>
+
+<h2>Employees</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Job Title</th>
+    </tr>
+    @foreach (var emp in Model.Employees)
+    {
+        <tr>
+            <td>@emp.Id</td>
+            <td>@emp.FirstName @emp.LastName</td>
+            <td>@emp.Email</td>
+            <td>@emp.JobTitle</td>
+        </tr>
+    }
+</table>
+
+<h2>Tasks</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Priority</th>
+        <th>Assigned To</th>
+    </tr>
+    @foreach (var task in Model.Tasks)
+    {
+        <tr>
+            <td>@task.Id</td>
+            <td>@task.Title</td>
+            <td>@task.Description</td>
+            <td>@task.Status</td>
+            <td>@task.Priority</td>
+            <td>@task.AssignedTo</td>
+        </tr>
+    }
+</table>

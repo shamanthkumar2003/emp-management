@@ -115,3 +115,12 @@
 /home/shamanth/Documents/dotnet/newsetup/setups/obj/Debug/net9.0/setups.pdb
 /home/shamanth/Documents/dotnet/newsetup/setups/obj/Debug/net9.0/setups.genruntimeconfig.cache
 /home/shamanth/Documents/dotnet/newsetup/setups/obj/Debug/net9.0/ref/setups.dll
+E:\ASP\emp-management\obj\Debug\net9.0\setups.csproj.AssemblyReference.cache
+E:\ASP\emp-management\obj\Debug\net9.0\setups.GeneratedMSBuildEditorConfig.editorconfig
+E:\ASP\emp-management\obj\Debug\net9.0\setups.AssemblyInfoInputs.cache
+E:\ASP\emp-management\obj\Debug\net9.0\setups.AssemblyInfo.cs
+E:\ASP\emp-management\obj\Debug\net9.0\setups.csproj.CoreCompileInputs.cache
+E:\ASP\emp-management\obj\Debug\net9.0\setups.MvcApplicationPartsAssemblyInfo.cache
+E:\ASP\emp-management\obj\Debug\net9.0\setups.RazorAssemblyInfo.cache
+E:\ASP\emp-management\obj\Debug\net9.0\setups.RazorAssemblyInfo.cs
+E:\ASP\emp-management\obj\Debug\net9.0\setups.sourcelink.json

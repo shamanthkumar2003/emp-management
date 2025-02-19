@@ -1,29 +1,18 @@
-using System;
-using MySql.Data.MySqlClient;
+var builder = WebApplication.CreateBuilder(args);
 
-class Program
-{
-    static void Main()
-    {
-        
-string connectionString = "server=82.112.229.208;port=3306;database=u376928149_employee;user=u376928149_root;password=Contact@os#2024;";
-        using (MySqlConnection conn = new MySqlConnection(connectionString))
-        {
-            try
-            {
-                conn.Open();
-                Console.WriteLine("Connected to MySQL successfully!");
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<UserService>();
 
-                // Run a sample query
-                string query = "SELECT VERSION()";
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                string version = cmd.ExecuteScalar().ToString();
-                Console.WriteLine("MySQL Version: " + version);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-            }
-        }
-    }
-}
+var app = builder.Build();
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.Run();
