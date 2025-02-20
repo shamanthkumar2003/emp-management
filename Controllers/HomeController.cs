@@ -21,9 +21,10 @@ namespace Setup.Controllers
         {
             var model = new DashboardViewModel
             {
-                Employees = _userService.GetEmployees(), // Fetch employees from MySQL
-                Tasks = _userService.GetTasks(),        // Fetch tasks from MySQL
-                Attendance = _userService.GetAttendance() // Fetch attendance from MySQL
+                Employees = _userService.GetEmployees(),  // Fetch employees from MySQL
+                Tasks = _userService.GetTasks(),         // Fetch tasks from MySQL
+                Attendance = _userService.GetAttendance(), // Fetch attendance from MySQL
+                Departments = _userService.GetDepartments() // Fetch departments from MySQL
             };
 
             return View(model); // Pass the correct model to the View

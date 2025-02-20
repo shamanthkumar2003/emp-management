@@ -97,5 +97,29 @@ namespace Setup.Services // Namespace for the UserService class
             }
             return attendanceRecords;
         }
+
+        public List<Department> GetDepartments()
+        {
+            List<Department> departments = new List<Department>();
+
+            using (MySqlConnection conn = new MySqlConnection(_connectionString))
+            {
+                conn.Open();
+                string query = "SELECT * FROM departments";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    departments.Add(new Department
+                    {
+                        Id = reader.GetInt32("id"),
+                        Name = reader.GetString("name"),
+                        ManagerId = reader.IsDBNull(reader.GetOrdinal("manager_id")) ? (int?)null : reader.GetInt32("manager_id")
+                    });
+                }
+            }
+            return departments;
+        }
     }
 }

@@ -70,3 +70,20 @@
         </tr>
     }
 </table>
+
+<h2>Departments</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Manager ID</th>
+    </tr>
+    @foreach (var dept in Model.Departments)
+    {
+        <tr>
+            <td>@dept.Id</td>
+            <td>@dept.Name</td>
+            <td>@(dept.ManagerId.HasValue ? dept.ManagerId.ToString() : "N/A")</td>
+        </tr>
+    }
+</table>
