@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data;
 using MySql.Data.MySqlClient;
@@ -120,6 +121,34 @@ namespace Setup.Services // Namespace for the UserService class
                 }
             }
             return departments;
+        }
+
+        // Fetch jobs
+        public List<Job> GetJobs()
+        {
+            List<Job> jobs = new List<Job>();
+
+            using (MySqlConnection conn = new MySqlConnection(_connectionString))
+            {
+                conn.Open();
+                string query = "SELECT * FROM jobs";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    jobs.Add(new Job
+                    {
+                        Id = reader.GetInt32("id"),
+                        Title = reader.GetString("title"),
+                        MinSalary = reader.IsDBNull(reader.GetOrdinal("min_salary")) ? (decimal?)null : reader.GetDecimal("min_salary"),
+                        MaxSalary = reader.IsDBNull(reader.GetOrdinal("max_salary")) ? (decimal?)null : reader.GetDecimal("max_salary"),
+                        CreatedAt = reader.GetDateTime("created_at"),
+                        UpdatedAt = reader.GetDateTime("updated_at")
+                    });
+                }
+            }
+            return jobs;
         }
     }
 }

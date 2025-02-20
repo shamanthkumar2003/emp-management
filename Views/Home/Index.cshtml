@@ -87,3 +87,26 @@
         </tr>
     }
 </table>
+
+<h2>Jobs</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>MinSalary</th>
+        <th>MAxSalary</th>
+        <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+
+    </tr>
+    @foreach (var job in Model.Jobs)
+    {
+        <tr>
+            <td>@job.Id</td>
+            <td>@job.Title</td>
+            <td>@job.MinSalary</td>
+            <td>@job.MaxSalary</td>
+            <td>@job.CreatedAt</td>
+        </tr>
+    }
+</table>

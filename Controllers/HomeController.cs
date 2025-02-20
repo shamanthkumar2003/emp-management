@@ -24,7 +24,8 @@ namespace Setup.Controllers
                 Employees = _userService.GetEmployees(),  // Fetch employees from MySQL
                 Tasks = _userService.GetTasks(),         // Fetch tasks from MySQL
                 Attendance = _userService.GetAttendance(), // Fetch attendance from MySQL
-                Departments = _userService.GetDepartments() // Fetch departments from MySQL
+                Departments = _userService.GetDepartments(), // Fetch departments from MySQL
+                Jobs = _userService.GetJobs() // Fetch jobs from MySQL
             };
 
             return View(model); // Pass the correct model to the View
