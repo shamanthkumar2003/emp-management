@@ -3,7 +3,9 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using Microsoft.Extensions.Configuration;
 using setups.Models;
-public class UserService
+namespace Setup.Services // Namespace for the UserService class
+{
+    public class UserService
 {
     private readonly string _connectionString;
 
@@ -67,4 +69,5 @@ public class UserService
         }
         return tasks;
     }
+}
 }

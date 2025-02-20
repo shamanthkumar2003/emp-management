@@ -1,35 +1,42 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using setups.Models;
+using Setup.Services; 
 using System.Collections.Generic;
-using emp-management.Services; 
-namespace Setup.Controllers;
 
-public class HomeController : Controller
+namespace Setup.Controllers 
 {
-    private readonly ILogger<HomeController> _logger;
-    private readonly UserService _userService; // Inject UserService
-
-    public HomeController(ILogger<HomeController> logger, UserService userService)
+    public class HomeController : Controller
     {
-        _logger = logger;
-        _userService = userService; // Initialize UserService
-    }
+        private readonly ILogger<HomeController> _logger;
+        private readonly UserService _userService; // Inject UserService
 
-    public IActionResult Index()
-    {
-        List<User> users = _userService.GetUsers(); // Fetch data from MySQL
-        return View(users); // Pass data to the View
-    }
+        public HomeController(ILogger<HomeController> logger, UserService userService)
+        {
+            _logger = logger;
+            _userService = userService; // Initialize UserService
+        }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
+        public IActionResult Index()
+        {
+            var model = new DashboardViewModel
+            {
+                Employees = _userService.GetEmployees(), // Fetch employees from MySQL
+                Tasks = _userService.GetTasks()         // Fetch tasks from MySQL (if needed)
+            };
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(model); // Pass the correct model to the View
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
     }
 }
