@@ -47,3 +47,26 @@
         </tr>
     }
 </table>
+
+<h2>Attendance</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Employee ID</th>
+        <th>Check-In</th>
+        <th>Check-Out</th>
+        <th>Status</th>
+        <th>Created At</th>
+    </tr>
+    @foreach (var att in Model.Attendance)
+    {
+        <tr>
+            <td>@att.Id</td>
+            <td>@att.EmployeeId</td>
+            <td>@att.CheckIn</td>
+            <td>@(att.CheckOut.HasValue ? att.CheckOut.Value.ToString("yyyy-MM-dd HH:mm:ss") : "N/A")</td>
+            <td>@att.Status</td>
+            <td>@att.CreatedAt</td>
+        </tr>
+    }
+</table>

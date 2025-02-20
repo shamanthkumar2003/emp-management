@@ -1,10 +1,10 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using setups.Models;
-using Setup.Services; 
+using Setup.Services;
 using System.Collections.Generic;
 
-namespace Setup.Controllers 
+namespace Setup.Controllers
 {
     public class HomeController : Controller
     {
@@ -22,7 +22,8 @@ namespace Setup.Controllers
             var model = new DashboardViewModel
             {
                 Employees = _userService.GetEmployees(), // Fetch employees from MySQL
-                Tasks = _userService.GetTasks()         // Fetch tasks from MySQL (if needed)
+                Tasks = _userService.GetTasks(),        // Fetch tasks from MySQL
+                Attendance = _userService.GetAttendance() // Fetch attendance from MySQL
             };
 
             return View(model); // Pass the correct model to the View
